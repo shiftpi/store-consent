@@ -1,5 +1,4 @@
 # Store Consent
-
 A very simple toolkit for storing cookie consents on the backend.
 
 ## Motivation
@@ -84,7 +83,7 @@ A typical API call could look like this:
 ````
 
 ## License
-The project is licensed under the MIT license.
+The project is licensed under the MIT license. See ``LICENSE`` file.
 
 ## Contributors
 Andreas Rutz <andreas.rutz@posteo.de>.
