@@ -16,7 +16,7 @@ class Validate implements MiddlewareInterface
         $this->fields = $fields;
     }
 
-    protected function isValid(array $data)
+    protected function isValid(array $data): bool
     {
         if (count($data) !== count($this->fields) + 1) {
             return false;

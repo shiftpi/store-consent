@@ -15,7 +15,7 @@ class Database implements MiddlewareInterface
         $this->connection = new \PDO($connectionString);
     }
 
-    public function store($visitorId, array $data)
+    public function store($visitorId, array $data): void
     {
         $stmt = $this->connection->prepare('REPLACE INTO consent VALUES (:visitorId, :data, CURRENT_TIMESTAMP)');
         $stmt->bindValue(':visitorId', $visitorId);

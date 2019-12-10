@@ -5,6 +5,6 @@ return [
         'essential',
         'statistics',
         'marketing',
-        'external_media'
+        'external_media',
     ],
 ];

@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "php": "^7.2",
         "slim/slim": "^4.3",
         "nyholm/psr7": "^1.2",
         "nyholm/psr7-server": "^0.4.1"
