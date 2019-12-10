@@ -1,0 +1,22 @@
+{
+    "name": "shiftpi/store-consent",
+    "description": "Stores cookie consents",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Rutz",
+            "email": "andreas.rutz@posteo.de"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.3",
+        "nyholm/psr7": "^1.2",
+        "nyholm/psr7-server": "^0.4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shiftpi\\StoreConsent\\": "src/"
+        }
+    }
+}
