@@ -15,7 +15,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $app = AppFactory::create();
 
 $app->addRoutingMiddleware();
-$app->addErrorMiddleware(true, false, false);
+$app->addErrorMiddleware(false, false, false);
 
 $config = require __DIR__ . '/../config/settings.php';
 
