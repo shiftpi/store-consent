@@ -19,6 +19,10 @@ $app->addErrorMiddleware(false, false, false);
 
 $config = require __DIR__ . '/../config/settings.php';
 
+if (!empty($config['base_path'])) {
+    $app->setBasePath($config['base_path']);
+}
+
 $app->add(function(Request $request, RequestHandler $handler) {
     $response = $handler->handle($request);
     return $response->withAddedHeader('Content-Type', 'application/json');

@@ -28,6 +28,9 @@ First copy the file ``config/settings.dist.php`` to ``settings.php``. Adapt the 
 Use ``db_dsn`` for connection settings to the database. Store Consent internally uses PHP's PDO so the dsn should
 be PDO compatible.
 
+If you're running Store Consent in a sub directory, you have to put the directory path in ``base_path``.
+E.g. ``/consent-api`` (note: no trailing slash needed).
+
 The database can be created with the ``doc/createdb.sql`` script.
 
 ``consent_categories`` holds strings with category keys. These are the keys for the cookie categories you request
