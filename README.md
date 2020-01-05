@@ -28,8 +28,13 @@ First copy the file ``config/settings.dist.php`` to ``settings.php``. Adapt the 
 Use ``db_dsn`` for connection settings to the database. Store Consent internally uses PHP's PDO so the dsn should
 be PDO compatible.
 
-If you're running Store Consent in a sub directory, you have to put the directory path in ``base_path``.
-E.g. ``/consent-api`` (note: no trailing slash needed).
+If you're running Store Consent in a subdirectory, you have to put the directory path in ``base_path``.
+E.g. ``/consent-api`` (note: no trailing slash needed). You also have to change the .htaccess file if you're using Apache:
+Prepend the subdirectory path to the rewrite rule. This could look like this:
+
+````
+RewriteRule ^ /consent-api/index.php [QSA,L]
+```` 
 
 The database can be created with the ``doc/createdb.sql`` script.
 
