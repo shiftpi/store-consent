@@ -13,19 +13,19 @@ offer such an backend storing feature.
 You can use this toolkit for hooking into your consent tool and send the user selected consent to a database.
 
 ## Limitations
-Please keep in mind: This is a very simple project. Currently it's only tested with SQLite. It's not tested under
-heavy traffic.
+For reading the consents from the database you have to access the database directly. There is no GUI for doing this.
 
-For reading the consents from the database you have to access the database directly. There is no GUI for that.
+Currently supported database engines are MySQL and SQLite.
 
 ## Requirements
 You need:
 * PHP 7
 * Some knowledge about JavaScript
+* Optionally: A MySQL host
 
 ## Installation
 First copy the file ``config/settings.dist.php`` to ``settings.php``. Adapt the file to your environment:
-Use ``db_dsn`` for connection settings to the database. Store Consent internally uses PHP's PDO so the dsn should
+Use the ``db`` array for connection settings to the database. Store Consent internally uses PHP's PDO so the dsn should
 be PDO compatible.
 
 If you're running Store Consent in a subdirectory, you have to put the directory path in ``base_path``.
@@ -36,7 +36,7 @@ Prepend the subdirectory path to the rewrite rule. This could look like this:
 RewriteRule ^ /consent-api/index.php [QSA,L]
 ```` 
 
-The database can be created with the ``doc/createdb.sql`` script.
+The database can be created with the ``doc/createdb_mysql.sql`` or  ``doc/createdb_sqlite.sql`` script.
 
 ``consent_categories`` holds strings with category keys. These are the keys for the cookie categories you request
 your users for permission. 

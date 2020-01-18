@@ -1,6 +1,11 @@
 <?php
 return [
-    'db_dsn' => 'sqlite:/' . __DIR__ . '/../consents.sqlite',
+    'db' => [
+        'dsn' => 'mysql:host=localhost;dbname=storeconsent',
+        // 'dsn' => 'sqlite:/' . __DIR__ . '/../consents.sqlite',
+        'user' => 'root',
+        'password' => 'root',
+    ],
     'base_path' => '',
     'consent_categories' =>[
         'essential',
