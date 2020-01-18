@@ -33,7 +33,7 @@ $app
         $response->getBody()->write(json_encode(['id' => $request->getAttribute('route')->getArgument('visitor_id')]));
         return $response;
     })
-    ->add(new Database($config['db_dsn']))
+    ->add(new Database($config['db']['dsn'], $config['db']['user'], $config['db']['password']))
     ->add(new Validate($config['consent_categories']))
     ->add(function(Request $request, RequestHandler $handler) {
         $id = hash('sha3-256', random_bytes(100));
@@ -46,7 +46,7 @@ $app
     ->put('/consent/{visitor_id}', function(Request $request, Response $response) {
         return $response;
     })
-    ->add(new Database($config['db_dsn']))
+    ->add(new Database($config['db']['dsn'], $config['db']['user'], $config['db']['password']))
     ->add(new Validate($config['consent_categories']))
     ->add(function(Request $request, RequestHandler $handler) {
         parse_str($request->getBody()->getContents(), $body);

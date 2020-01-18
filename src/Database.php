@@ -10,14 +10,16 @@ class Database implements MiddlewareInterface
 {
     protected $connection;
 
-    public function __construct($connectionString)
+    public function __construct($connectionString, $user, $password)
     {
-        $this->connection = new \PDO($connectionString);
+        $this->connection = new \PDO($connectionString, $user, $password);
     }
 
     public function store($visitorId, array $data): void
     {
-        $stmt = $this->connection->prepare('REPLACE INTO consent VALUES (:visitorId, :data, CURRENT_TIMESTAMP)');
+        $stmt = $this->connection->prepare(
+            'REPLACE INTO consent (visitor_id, settings, last_change) VALUES (:visitorId, :data, CURRENT_TIMESTAMP)'
+        );
         $stmt->bindValue(':visitorId', $visitorId);
         $stmt->bindValue(':data', json_encode($data));
 
