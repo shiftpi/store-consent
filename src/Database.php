@@ -10,12 +10,12 @@ class Database implements MiddlewareInterface
 {
     protected $connection;
 
-    public function __construct($connectionString, $user, $password)
+    public function __construct(string $connectionString, string $user, string $password)
     {
         $this->connection = new \PDO($connectionString, $user, $password);
     }
 
-    public function store($visitorId, array $data): void
+    public function store(string $visitorId, array $data): void
     {
         $stmt = $this->connection->prepare(
             'REPLACE INTO consent (visitor_id, settings, last_change) VALUES (:visitorId, :data, CURRENT_TIMESTAMP)'
@@ -28,7 +28,7 @@ class Database implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->store($request->getAttribute('route')->getArgument('visitor_id'), $request->getParsedBody());
+        $this->store($request->getAttribute('__route__')->getArgument('visitor_id'), $request->getParsedBody());
 
         return $handler->handle($request);
     }

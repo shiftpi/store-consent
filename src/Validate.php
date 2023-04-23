@@ -39,8 +39,8 @@ class Validate implements MiddlewareInterface
     {
         $body = $request->getParsedBody();
 
-        if ($request->getAttribute('route')->getArgument('visitor_id')) {
-            $body['visitor_id'] = $request->getAttribute('route')->getArgument('visitor_id');
+        if ($request->getAttribute('__route__')->getArgument('visitor_id')) {
+            $body['visitor_id'] = $request->getAttribute('__route__')->getArgument('visitor_id');
         }
 
         if (!$this->isValid($body)) {

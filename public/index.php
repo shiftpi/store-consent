@@ -30,14 +30,14 @@ $app->add(function(Request $request, RequestHandler $handler) {
 
 $app
     ->post('/consent', function(Request $request, Response $response) {
-        $response->getBody()->write(json_encode(['id' => $request->getAttribute('route')->getArgument('visitor_id')]));
+        $response->getBody()->write(json_encode(['id' => $request->getAttribute('__route__')->getArgument('visitor_id')]));
         return $response;
     })
     ->add(new Database($config['db']['dsn'], $config['db']['user'], $config['db']['password']))
     ->add(new Validate($config['consent_categories']))
     ->add(function(Request $request, RequestHandler $handler) {
         $id = hash('sha3-256', random_bytes(100));
-        $request->getAttribute('route')->setArgument('visitor_id', $id);
+        $request->getAttribute('__route__')->setArgument('visitor_id', $id);
 
         return $handler->handle($request);
     });
@@ -50,7 +50,7 @@ $app
     ->add(new Validate($config['consent_categories']))
     ->add(function(Request $request, RequestHandler $handler) {
         parse_str($request->getBody()->getContents(), $body);
-        return $handler->handle($request->withParsedBody($body));
+        return $handler->handle($request->withParsedBody($body))->withStatus(201);
     });
 
 

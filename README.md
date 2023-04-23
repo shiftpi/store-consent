@@ -19,9 +19,9 @@ Currently supported database engines are MySQL and SQLite.
 
 ## Requirements
 You need:
-* PHP 7
+* PHP 8
 * Some knowledge about JavaScript
-* Optionally: A MySQL host
+* Optionally: A MySQL database
 
 ## Installation
 First copy the file ``config/settings.dist.php`` to ``settings.php``. Adapt the file to your environment:
@@ -62,8 +62,8 @@ essential=1&marketing=1&external_media=0
 The response will be a JSON object, containing the property ``id``. This id is required, if you want to update
 a consent.
 
-The update endpoint is accessible over ``PATCH <your path>/consent/<id>``. The body should be the same as in the
-POST endpoint. However the id will not be returned, the response will be empty.
+The update endpoint is accessible over ``PUT <your path>/consent/<id>``. The body should be the same as in the
+POST endpoint. However, the id will not be returned, the response will be empty.
 
 ## Using the JS API (high level)
 If you want to use a JS API, there is a file called ``store-consent.js`` in the ``docs`` directory.
